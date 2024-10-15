@@ -55,9 +55,9 @@ public class SlingShotHandler : MonoBehaviour
             DrawSlingShot();
             PositionAndRotateAngieBird();
         }
-        if(Mouse.current.leftButton.wasReleasedThisFrame && _birdOnSlingShot)
+        if (Mouse.current.leftButton.wasReleasedThisFrame && _birdOnSlingShot)
         {
-            if(GameManager.Instance.HasEnoughShots())
+            if (GameManager.Instance.HasEnoughShots())
             {
                 _clickedWithinArea = false;
 
@@ -66,16 +66,13 @@ public class SlingShotHandler : MonoBehaviour
                 _birdOnSlingShot = false;
 
                 SetLines(_centerPosition.position);
-                if(GameManager.Instance.HasEnoughShots())
+                if (GameManager.Instance.HasEnoughShots())
                 {
                     StartCoroutine(SpawnAngieBirdAfterTime());
 
                 }
             }
-
-            
         }
-        
     }
 
 

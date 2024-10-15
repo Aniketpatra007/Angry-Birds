@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int MaxNumberOfShots = 3;
     [SerializeField] private float _secondsToWaitBeforeDeath = 3f;
     [SerializeField] private GameObject _restartScreenObject;
+    [SerializeField] private SlingShotHandler _slingShotHandler;
 
     private int _usedNumberOfShots;
 
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            LoseGame();
+            RestartGame();
         }
     }
 
@@ -93,11 +94,11 @@ public class GameManager : MonoBehaviour
     #region Win/lose
     private void WinGame()
     {
-        Debug.Log("Win");
         _restartScreenObject.SetActive(true);
+        _slingShotHandler.enabled = false;
     }
 
-    private void LoseGame()
+    public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
