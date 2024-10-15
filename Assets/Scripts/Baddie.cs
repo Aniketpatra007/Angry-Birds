@@ -6,6 +6,8 @@ public class Baddie : MonoBehaviour
 {
     [SerializeField] private float _maxHealth = 3f;
     [SerializeField] private float _damageThreshold = 0.2f;
+    [SerializeField] private GameObject _baddieDeathParticle;
+    [SerializeField] private AudioClip _deathClip;
     private float _currentHealth;
 
     private void Awake()
@@ -25,6 +27,9 @@ public class Baddie : MonoBehaviour
     public void Die()
     {
         GameManager.Instance.RemoveBaddie(this);
+
+        Instantiate(_baddieDeathParticle,transform.position,Quaternion.identity);
+        AudioSource.PlayClipAtPoint(_deathClip, transform.position);
         Destroy(gameObject);
     }
 
